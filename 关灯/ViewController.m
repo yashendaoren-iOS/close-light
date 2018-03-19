@@ -25,6 +25,7 @@
 @interface ViewController (){
 
     BOOL _array[lon*lat];
+    NSInteger i1,j1,tag1,i2,j2,tag2,i3,j3,tag3,i4,j4,tag4;
 }
 
 @end
@@ -82,123 +83,44 @@
     switch (tag) {
         case 100://左上角（点击的是左上角的第一个）       右 下（这两个变色）
         {
-            //右边
-            UIButton *rightBtn = (UIButton *)[self.view viewWithTag:tag + 1];
-            rightBtn.selected = !rightBtn.selected;
-            if (!rightBtn.selected) {
-                rightBtn.backgroundColor = [UIColor whiteColor];
-            }else{
-                rightBtn.backgroundColor = [UIColor blackColor];
-            }
-            NSInteger tag4 = tag + 1;
-            NSInteger i4 = tag4/100;
-            NSInteger j4 = tag4%100;
-            _array[i4 * lon + j4] = !_array[i4 * lon + j4];
+            tag1 = 10000;
+            tag3 = 10000;
             
-            //下边
-            UIButton *downBtn = (UIButton *)[self.view viewWithTag:tag + 100];
-            downBtn.selected = !downBtn.selected;
-            if (!downBtn.selected) {
-                downBtn.backgroundColor = [UIColor whiteColor];
-            }else{
-                downBtn.backgroundColor = [UIColor blackColor];
-            }
-            NSInteger tag2 = tag + 100;
-            NSInteger i2 = tag2/100;
-            NSInteger j2 = tag2%100;
-            _array[i2 * lon + j2] = !_array[i2 * lon + j2];
+            tag2 = tag + 100;
+            tag4 = tag + 1;
+
+
+
         }
             break;
         case 100 + lon - 1: //右上角     左 下
         {
-            //左边
-            UIButton *leftBtn = (UIButton *)[self.view viewWithTag:tag - 1];
-            leftBtn.selected = !leftBtn.selected;
-            if (!leftBtn.selected) {
-                leftBtn.backgroundColor = [UIColor whiteColor];
-            }else{
-                leftBtn.backgroundColor = [UIColor blackColor];
-            }
-            NSInteger tag3 = tag - 1;
-            NSInteger i3 = tag3/100;
-            NSInteger j3 = tag3%100;
-            _array[i3 * lon + j3] = !_array[i3 * lon + j3];
-            
-            //下边
-            UIButton *downBtn = (UIButton *)[self.view viewWithTag:tag + 100];
-            downBtn.selected = !downBtn.selected;
-            if (!downBtn.selected) {
-                downBtn.backgroundColor = [UIColor whiteColor];
-            }else{
-                downBtn.backgroundColor = [UIColor blackColor];
-            }
-            NSInteger tag2 = tag + 100;
-            NSInteger i2 = tag2/100;
-            NSInteger j2 = tag2%100;
-            _array[i2 * lon + j2] = !_array[i2 * lon + j2];
-            
+            tag1 = 10000;
+            tag4 = 10000;
+
+            tag2 = tag + 100;
+            tag3 = tag - 1;
+
         }
             break;
         case 100 * lat://左下角          右 上
         {
-            //右边
-            UIButton *rightBtn = (UIButton *)[self.view viewWithTag:tag + 1];
-            rightBtn.selected = !rightBtn.selected;
-            if (!rightBtn.selected) {
-                rightBtn.backgroundColor = [UIColor whiteColor];
-            }else{
-                rightBtn.backgroundColor = [UIColor blackColor];
-            }
-            NSInteger tag4 = tag + 1;
-            NSInteger i4 = tag4/100;
-            NSInteger j4 = tag4%100;
-            _array[i4 * lon + j4] = !_array[i4 * lon + j4];
+            tag2 = 10000;
+            tag3 = 10000;
             
-            //上边
-            UIButton *upBtn = (UIButton *)[self.view viewWithTag:tag - 100];
-            upBtn.selected = !upBtn.selected;
-            if (!upBtn.selected) {
-                upBtn.backgroundColor = [UIColor whiteColor];
-            }else{
-                upBtn.backgroundColor = [UIColor blackColor];
-            }
-            NSInteger tag1 = tag - 100;
-            NSInteger i1 = tag1/100;
-            NSInteger j1 = tag1%100;
-            _array[i1 * lon + j1] = !_array[i1 * lon + j1];
-            
+            tag1 = tag - 100;
+            tag4 = tag + 1;
             
         }
             break;
         case 100 * lat + lon - 1://右下角        左 上
         {
-            //左边
-            UIButton *leftBtn = (UIButton *)[self.view viewWithTag:tag - 1];
-            leftBtn.selected = !leftBtn.selected;
-            if (!leftBtn.selected) {
-                leftBtn.backgroundColor = [UIColor whiteColor];
-            }else{
-                leftBtn.backgroundColor = [UIColor blackColor];
-            }
-            NSInteger tag3 = tag - 1;
-            NSInteger i3 = tag3/100;
-            NSInteger j3 = tag3%100;
-            _array[i3 * lon + j3] = !_array[i3 * lon + j3];
+            tag2 = 10000;
+            tag4 = 10000;
+            
+            tag1 = tag - 100;
+            tag3 = tag - 1;
 
-            
-            //上边
-            UIButton *upBtn = (UIButton *)[self.view viewWithTag:tag - 100];
-            upBtn.selected = !upBtn.selected;
-            if (!upBtn.selected) {
-                upBtn.backgroundColor = [UIColor whiteColor];
-            }else{
-                upBtn.backgroundColor = [UIColor blackColor];
-            }
-            NSInteger tag1 = tag - 100;
-            NSInteger i1 = tag1/100;
-            NSInteger j1 = tag1%100;
-            _array[i1 * lon + j1] = !_array[i1 * lon + j1];
-            
         }
             break;
             
@@ -206,227 +128,112 @@
         {
         
             if (tag > 100 && tag < 100+lon) {//第一行        左 右 下
-                
-                //下边
-                UIButton *downBtn = (UIButton *)[self.view viewWithTag:tag + 100];
-                downBtn.selected = !downBtn.selected;
-                if (!downBtn.selected) {
-                    downBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    downBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag2 = tag + 100;
-                NSInteger i2 = tag2/100;
-                NSInteger j2 = tag2%100;
-                _array[i2 * lon + j2] = !_array[i2 * lon + j2];
-                
-                //左边
-                UIButton *leftBtn = (UIButton *)[self.view viewWithTag:tag - 1];
-                leftBtn.selected = !leftBtn.selected;
-                if (!leftBtn.selected) {
-                    leftBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    leftBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag3 = tag - 1;
-                NSInteger i3 = tag3/100;
-                NSInteger j3 = tag3%100;
-                _array[i3 * lon + j3] = !_array[i3 * lon + j3];
-                
-                //右边
-                UIButton *rightBtn = (UIButton *)[self.view viewWithTag:tag + 1];
-                rightBtn.selected = !rightBtn.selected;
-                if (!rightBtn.selected) {
-                    rightBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    rightBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag4 = tag + 1;
-                NSInteger i4 = tag4/100;
-                NSInteger j4 = tag4%100;
-                _array[i4 * lon + j4] = !_array[i4 * lon + j4];
-                
+
+                tag1 = 10000;
+
+                tag2 = tag + 100;
+                tag3 = tag - 1;
+                tag4 = tag + 1;
+
                 
             }else if (tag%100 == 0){//第一列 上 下 右
-                //上边
-                UIButton *upBtn = (UIButton *)[self.view viewWithTag:tag - 100];
-                upBtn.selected = !upBtn.selected;
-                if (!upBtn.selected) {
-                    upBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    upBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag1 = tag - 100;
-                NSInteger i1 = tag1/100;
-                NSInteger j1 = tag1%100;
-                _array[i1 * lon + j1] = !_array[i1 * lon + j1];
+
+                tag3 = 10000;
                 
-                //下边
-                UIButton *downBtn = (UIButton *)[self.view viewWithTag:tag + 100];
-                downBtn.selected = !downBtn.selected;
-                if (!downBtn.selected) {
-                    downBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    downBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag2 = tag + 100;
-                NSInteger i2 = tag2/100;
-                NSInteger j2 = tag2%100;
-                _array[i2 * lon + j2] = !_array[i2 * lon + j2];
-                
-                //右边
-                UIButton *rightBtn = (UIButton *)[self.view viewWithTag:tag + 1];
-                rightBtn.selected = !rightBtn.selected;
-                if (!rightBtn.selected) {
-                    rightBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    rightBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag4 = tag + 1;
-                NSInteger i4 = tag4/100;
-                NSInteger j4 = tag4%100;
-                _array[i4 * lon + j4] = !_array[i4 * lon + j4];
+                tag1 = tag - 100;
+                tag2 = tag + 100;
+                tag4 = tag + 1;
             
             }else if (tag%100 == lon){//最后一列 上 下 左
-                //上边
-                UIButton *upBtn = (UIButton *)[self.view viewWithTag:tag - 100];
-                upBtn.selected = !upBtn.selected;
-                if (!upBtn.selected) {
-                    upBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    upBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag1 = tag - 100;
-                NSInteger i1 = tag1/100;
-                NSInteger j1 = tag1%100;
-                _array[i1 * lon + j1] = !_array[i1 * lon + j1];
+
+                tag4 = 10000;
                 
-                //下边
-                UIButton *downBtn = (UIButton *)[self.view viewWithTag:tag + 100];
-                downBtn.selected = !downBtn.selected;
-                if (!downBtn.selected) {
-                    downBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    downBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag2 = tag + 100;
-                NSInteger i2 = tag2/100;
-                NSInteger j2 = tag2%100;
-                _array[i2 * lon + j2] = !_array[i2 * lon + j2];
+                tag1 = tag - 100;
+                tag2 = tag + 100;
+                tag3 = tag - 1;
                 
-                //左边
-                UIButton *leftBtn = (UIButton *)[self.view viewWithTag:tag - 1];
-                leftBtn.selected = !leftBtn.selected;
-                if (!leftBtn.selected) {
-                    leftBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    leftBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag3 = tag - 1;
-                NSInteger i3 = tag3/100;
-                NSInteger j3 = tag3%100;
-                _array[i3 * lon + j3] = !_array[i3 * lon + j3];
-            
             }else if (tag > 100*lat && tag < 100*lat + lon){//最后一行  左 右 上
-                //上边
-                UIButton *upBtn = (UIButton *)[self.view viewWithTag:tag - 100];
-                upBtn.selected = !upBtn.selected;
-                if (!upBtn.selected) {
-                    upBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    upBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag1 = tag - 100;
-                NSInteger i1 = tag1/100;
-                NSInteger j1 = tag1%100;
-                _array[i1 * lon + j1] = !_array[i1 * lon + j1];
+
+                tag2 = 10000;
                 
-                //左边
-                UIButton *leftBtn = (UIButton *)[self.view viewWithTag:tag - 1];
-                leftBtn.selected = !leftBtn.selected;
-                if (!leftBtn.selected) {
-                    leftBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    leftBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag3 = tag - 1;
-                NSInteger i3 = tag3/100;
-                NSInteger j3 = tag3%100;
-                _array[i3 * lon + j3] = !_array[i3 * lon + j3];
-                
-                //右边
-                UIButton *rightBtn = (UIButton *)[self.view viewWithTag:tag + 1];
-                rightBtn.selected = !rightBtn.selected;
-                if (!rightBtn.selected) {
-                    rightBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    rightBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag4 = tag + 1;
-                NSInteger i4 = tag4/100;
-                NSInteger j4 = tag4%100;
-                _array[i4 * lon + j4] = !_array[i4 * lon + j4];
+                tag1 = tag - 100;
+                tag3 = tag - 1;
+                tag4 = tag + 1;
             
             }else{//其他 上 下 左 右
-            
-                //上边
-                UIButton *upBtn = (UIButton *)[self.view viewWithTag:tag - 100];
-                upBtn.selected = !upBtn.selected;
-                if (!upBtn.selected) {
-                    upBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    upBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag1 = tag - 100;
-                NSInteger i1 = tag1/100;
-                NSInteger j1 = tag1%100;
-                _array[i1 * lon + j1] = !_array[i1 * lon + j1];
-                
-                //下边
-                UIButton *downBtn = (UIButton *)[self.view viewWithTag:tag + 100];
-                downBtn.selected = !downBtn.selected;
-                if (!downBtn.selected) {
-                    downBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    downBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag2 = tag + 100;
-                NSInteger i2 = tag2/100;
-                NSInteger j2 = tag2%100;
-                _array[i2 * lon + j2] = !_array[i2 * lon + j2];
-                
-                //左边
-                UIButton *leftBtn = (UIButton *)[self.view viewWithTag:tag - 1];
-                leftBtn.selected = !leftBtn.selected;
-                if (!leftBtn.selected) {
-                    leftBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    leftBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag3 = tag - 1;
-                NSInteger i3 = tag3/100;
-                NSInteger j3 = tag3%100;
-                _array[i3 * lon + j3] = !_array[i3 * lon + j3];
-                
-                //右边
-                UIButton *rightBtn = (UIButton *)[self.view viewWithTag:tag + 1];
-                rightBtn.selected = !rightBtn.selected;
-                if (!rightBtn.selected) {
-                    rightBtn.backgroundColor = [UIColor whiteColor];
-                }else{
-                    rightBtn.backgroundColor = [UIColor blackColor];
-                }
-                NSInteger tag4 = tag + 1;
-                NSInteger i4 = tag4/100;
-                NSInteger j4 = tag4%100;
-                _array[i4 * lon + j4] = !_array[i4 * lon + j4];
-
+                tag1 = tag - 100;
+                tag2 = tag + 100;
+                tag3 = tag - 1;
+                tag4 = tag + 1;
                 
             }
         }
             break;
     }
     
+    if (tag1 != 10000) {
+        //上边
+        UIButton *upBtn = (UIButton *)[self.view viewWithTag:tag - 100];
+        upBtn.selected = !upBtn.selected;
+        if (!upBtn.selected) {
+            upBtn.backgroundColor = [UIColor whiteColor];
+        }else{
+            upBtn.backgroundColor = [UIColor blackColor];
+        }
+        tag1 = tag - 100;
+        i1 = tag1/100;
+        j1 = tag1%100;
+        _array[i1 * lon + j1] = !_array[i1 * lon + j1];
+ 
+        
+    }
+    if (tag2 != 10000) {
+        //下边
+        UIButton *downBtn = (UIButton *)[self.view viewWithTag:tag + 100];
+        downBtn.selected = !downBtn.selected;
+        if (!downBtn.selected) {
+            downBtn.backgroundColor = [UIColor whiteColor];
+        }else{
+            downBtn.backgroundColor = [UIColor blackColor];
+        }
+        tag2 = tag + 100;
+        i2 = tag2/100;
+        j2 = tag2%100;
+        _array[i2 * lon + j2] = !_array[i2 * lon + j2];
+        
+    }
+    if (tag3 != 10000) {
+        
+        //左边
+        UIButton *leftBtn = (UIButton *)[self.view viewWithTag:tag - 1];
+        leftBtn.selected = !leftBtn.selected;
+        if (!leftBtn.selected) {
+            leftBtn.backgroundColor = [UIColor whiteColor];
+        }else{
+            leftBtn.backgroundColor = [UIColor blackColor];
+        }
+        tag3 = tag - 1;
+        i3 = tag3/100;
+        j3 = tag3%100;
+        _array[i3 * lon + j3] = !_array[i3 * lon + j3];
+        
+    }
+    if (tag4 != 10000) {
+        
+        //右边
+        UIButton *rightBtn = (UIButton *)[self.view viewWithTag:tag + 1];
+        rightBtn.selected = !rightBtn.selected;
+        if (!rightBtn.selected) {
+            rightBtn.backgroundColor = [UIColor whiteColor];
+        }else{
+            rightBtn.backgroundColor = [UIColor blackColor];
+        }
+        tag4 = tag + 1;
+        i4 = tag4/100;
+        j4 = tag4%100;
+        _array[i4 * lon + j4] = !_array[i4 * lon + j4];
+    }
+
     //全部变为黑色 表示通关
     for (int k = 0; k < lon * lat; k++) {
         if (_array[k]) {
